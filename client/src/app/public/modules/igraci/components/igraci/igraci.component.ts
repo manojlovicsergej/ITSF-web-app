@@ -13,7 +13,7 @@ export class IgraciComponent implements OnInit, OnDestroy {
   _subs: Subscription;
 
   /** Props */
-  players : PlayerDto[] = [];
+  players: PlayerDto[] = [];
 
   constructor(private _playerHttp: PlayerHttpService) {
     this._subs = new Subscription();
@@ -23,9 +23,13 @@ export class IgraciComponent implements OnInit, OnDestroy {
     this._load();
   }
 
+  resetFilter() {
+    this._load();
+  }
+
   private _load() {
     this._subs.add(
-      this._playerHttp.getAllPlayers().subscribe((res : PlayerDto[]) => {
+      this._playerHttp.getAllPlayers().subscribe((res: PlayerDto[]) => {
         this.players = res;
       })
     );

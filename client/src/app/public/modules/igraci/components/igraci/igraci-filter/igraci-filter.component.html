@@ -1,0 +1,15 @@
+<div class="card flex justify-content-start mb-5">
+  <div class="flex flex-row align-items-center">
+    <div class="flex text-2xl">Filter kriterijum :</div>
+    <div class="flex ml-3">
+      <p-dropdown
+        class="dropdown-size"
+        [options]="cities"
+        [(ngModel)]="selectedCity"
+        optionLabel="name"
+        [showClear]="true"
+        placeholder="Select a City"
+      ></p-dropdown>
+    </div>
+  </div>
+</div>

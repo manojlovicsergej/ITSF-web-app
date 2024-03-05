@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ButtonModule } from 'primeng/button';
 import { CenteredDialogComponent } from './components/dialogs/centered-dialog/centered-dialog.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FieldComponent } from './components/ui/field/field.component';
 import { ChipsModule } from 'primeng/chips';
 import { InputTextModule } from 'primeng/inputtext';
@@ -36,6 +36,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     ChipModule,
     ButtonModule,
     ReactiveFormsModule,
+    FormsModule,
     DropdownModule,
     CalendarModule,
     RatingModule,
@@ -50,6 +51,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     DropdownModule,
     CommonModule,
     CalendarModule,
+    FormsModule,
     ChipsModule,
     RatingModule,
     InputTextModule,

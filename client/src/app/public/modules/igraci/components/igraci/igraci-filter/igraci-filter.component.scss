@@ -1,0 +1,10 @@
+:host::ng-deep{
+    .p-dropdown .p-component .p-dropdown-clearable{
+        width: 300px !important;
+    }
+    
+
+    .p-dropdown-label p-inputtext p-placeholder{
+        width: 300px !important;       
+    }
+}

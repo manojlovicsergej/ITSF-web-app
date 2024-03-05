@@ -38,7 +38,29 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when get all players");
         }
     }
-    
+
+    [HttpGet("get-all-players-by-filter")]
+    public IActionResult GetAllPlayersByFilter([FromBody])
+    {
+        ResponseType type = ResponseType.Success;
+        try
+        {
+            ICollection<PlayerDto> response = _dbHelper.GetPlayers();
+            type = ResponseType.Success;
+            if (!response.Any())
+            {
+                type = ResponseType.NotFound;
+            }
+
+            return Ok(response);
+        }
+        catch (Exception e)
+        {
+            type = ResponseType.Failure;
+            return BadRequest("Error when get all players");
+        }
+    }
+
     [HttpGet("get-all-games")]
     public IActionResult GetAllGames()
     {
