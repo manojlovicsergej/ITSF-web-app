@@ -33,7 +33,7 @@ export class IgracFormService {
       lastName: new FormControl(model?.lastName, {
         validators : [Validators.required]
       }),
-      dateofBirth: new FormControl(model?.dateofBirth, {
+      dateOfBirth: new FormControl(model?.dateOfBirth, {
         validators : [Validators.required]
       }),
       position: new FormControl(model?.position ?? Position.ATTACKER, {

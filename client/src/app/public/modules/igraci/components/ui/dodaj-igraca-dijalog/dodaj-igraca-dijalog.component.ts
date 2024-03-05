@@ -41,8 +41,8 @@ export class DodajIgracaDijalogComponent implements OnInit, OnDestroy {
     // Init form
     this.form = this._fs.GetIgracGroup();
 
-    this.dialogTitle = this._dialogConfig.data.title;
-    this.model = this._dialogConfig.data.player;
+    this.dialogTitle = this._dialogConfig?.data?.title;
+    this.model = this._dialogConfig?.data?.player;
 
     if (this.model) {
       this.patchFormByModel(this.model);
@@ -90,9 +90,11 @@ export class DodajIgracaDijalogComponent implements OnInit, OnDestroy {
   }
 
   private patchFormByModel(model: PlayerDto) {
+    console.log(model);
     if (this.form != null) {
       this.form.patchValue(model);
     }
+    console.log(this.form?.value);
   }
 
   protected readonly asFormControl = asFormControl;
