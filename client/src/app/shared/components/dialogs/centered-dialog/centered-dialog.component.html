@@ -1,0 +1,27 @@
+<div>
+  <div class="text-center p-5 text-sm md:text-xl">{{ dialogTitle }}</div>
+  <div class="body border-round">
+    <ng-content></ng-content>
+  </div>
+  <div class="footer">
+    <div class="border-top-1 surface-border pt-3 flex">
+      <button
+        pButton
+        pRipple
+        icon="pi pi-times"
+        (click)="handleCancel()"
+        label="Izađi"
+        class="p-button-outlined w-6 mr-2 custom-button-color"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-check"
+        (click)="handleSave()"
+        [loading]="shouldDisableBtn"
+        label="Sačuvaj"
+        class="p-button-outlined w-6 mr-2 custom-button-color"
+      ></button>
+    </div>
+  </div>
+</div>

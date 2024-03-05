@@ -1,0 +1,22 @@
+<app-centered-dialog
+  [dialogTitle]="dialogTitle"
+  (onCancel)="handleCancel()"
+  (onSave)="handleSave()"
+>
+  <div [formGroup]="form" *ngIf="form">
+    <app-field fieldLabel="Rezultat gosta">
+      <app-number-with-steps
+        class="inputfield w-full"
+        [formCtrl]="asFormControl(form.controls['hostResult'])"
+      >
+      </app-number-with-steps>
+    </app-field>
+    <app-field fieldLabel="Rezultat gosta">
+      <app-number-with-steps
+        class="inputfield w-full"
+        [formCtrl]="asFormControl(form.controls['guestResult'])"
+      >
+      </app-number-with-steps>
+    </app-field>
+  </div>
+</app-centered-dialog>

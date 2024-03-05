@@ -1,0 +1,347 @@
+<div class="grid">
+  <div class="col-6">
+    <div>
+      <div class="surface-card shadow-2 border-round p-4" style="height: 640px">
+        <div class="flex justify-content-between align-items-center mb-5">
+          <span class="text-xl text-900 font-medium">Kreiraj utakmicu</span>
+          <div>
+            <button
+              pButton
+              class="kreiraj-utakmicu-button p-button-rounded"
+              (click)="kreirajUtakmicu()"
+            >
+              Kreiraj
+            </button>
+          </div>
+        </div>
+        <div [formGroup]="form" *ngIf="form">
+          <app-field fieldLabel="Naziv utakmice">
+            <input
+              class="inputfield w-full"
+              type="text"
+              pInputText
+              maxlength="150"
+              [formControl]="asFormControl(form.controls['gameName'])"
+            />
+          </app-field>
+          <div class="grid">
+            <div class="col-6">
+              <app-field fieldLabel="Ime domaćina">
+                <input
+                  class="inputfield w-full"
+                  type="text"
+                  pInputText
+                  maxlength="150"
+                  [formControl]="asFormControl(form.controls['hostName'])"
+                />
+              </app-field>
+            </div>
+            <div class="col-6">
+              <app-field fieldLabel="Rezultat domaćina">
+                <app-number-with-steps
+                  [formCtrl]="asFormControl(form.controls['hostResult'])"
+                >
+                </app-number-with-steps>
+              </app-field>
+            </div>
+            <div class="col-6">
+              <app-field fieldLabel="Ime gosta">
+                <input
+                  class="inputfield w-full"
+                  type="text"
+                  pInputText
+                  maxlength="150"
+                  [formControl]="asFormControl(form.controls['guestName'])"
+                />
+              </app-field>
+            </div>
+            <div class="col-6">
+              <app-field fieldLabel="Rezultat gosta">
+                <app-number-with-steps
+                  [formCtrl]="asFormControl(form.controls['guestResult'])"
+                >
+                </app-number-with-steps>
+              </app-field>
+            </div>
+            <div class="col-6">
+              <div class="flex justify-content-between align-items-center mb-5">
+                <span class="text-l text-900 font-medium">Domaćini</span>
+              </div>
+              <div
+                class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+                style="border-radius: 8px"
+                *ngIf="hostPlayers.length === 0"
+              >
+                <div class="align-items-center flex">
+                  <span class="line-height-3 hidden lg:block"
+                    >Nema odabranih igrača!</span
+                  >
+                </div>
+              </div>
+              <ul class="list-none p-0 m-0">
+                <li
+                  class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+                  *ngFor="let player of hostPlayers"
+                >
+                  <div class="flex">
+                    <img
+                      src="assets/images/player.png"
+                      class="mr-3"
+                      style="width: 45px; height: 45px"
+                    />
+                    <div>
+                      <span class="block text-900 font-medium mb-1"
+                        >{{ player.firstName }} {{ player.lastName }}</span
+                      >
+                      <div class="text-600">Rating: {{ player.rating }}</div>
+                    </div>
+                  </div>
+                  <div class="mt-2 md:mt-0 flex flex-nowrap">
+                    <button
+                      pButton
+                      class="guest-button p-button-rounded mr-1"
+                      (click)="izbaciIgraca(player.id ?? 0, 0)"
+                    >
+                      X
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <div class="flex justify-content-between align-items-center mb-5">
+                <span class="text-l text-900 font-medium">Gosti</span>
+              </div>
+              <div
+                class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+                style="border-radius: 8px"
+                *ngIf="guestPlayers.length === 0"
+              >
+                <div class="align-items-center flex">
+                  <span class="line-height-3 hidden lg:block"
+                    >Nema odabranih igrača!</span
+                  >
+                </div>
+              </div>
+              <ul class="list-none p-0 m-0">
+                <li
+                  class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+                  *ngFor="let player of guestPlayers"
+                >
+                  <div class="flex">
+                    <img
+                      src="assets/images/player.png"
+                      class="mr-3"
+                      style="width: 45px; height: 45px"
+                    />
+                    <div>
+                      <span class="block text-900 font-medium mb-1"
+                        >{{ player.firstName }} {{ player.lastName }}</span
+                      >
+                      <div class="text-600">Rating: {{ player.rating }}</div>
+                    </div>
+                  </div>
+                  <div class="mt-2 md:mt-0 flex flex-nowrap">
+                    <button
+                      pButton
+                      class="guest-button p-button-rounded mr-1"
+                      (click)="izbaciIgraca(player.id ?? 0, 1)"
+                    >
+                      X
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div>
+      <div class="surface-card shadow-2 border-round p-4" style="height: 640px">
+        <div class="flex justify-content-between align-items-center mb-5">
+          <span class="text-xl text-900 font-medium">Brza pretraga igrača</span>
+        </div>
+        <p-scrollPanel [style]="{ width: '100%', height: '520px' }">
+          <div
+            class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+            style="border-radius: 8px"
+            *ngIf="!tempPlayers"
+          >
+            <div class="align-items-center flex">
+              <span class="line-height-3 hidden lg:block"
+                >Nema igrača. Unesite igrače na stranici igrači!</span
+              >
+            </div>
+          </div>
+          <ul class="list-none p-0 m-0">
+            <li
+              class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+              *ngFor="let player of tempPlayers"
+            >
+              <div class="flex">
+                <img
+                  src="assets/images/player.png"
+                  class="mr-3"
+                  style="width: 45px; height: 45px"
+                />
+                <div>
+                  <span class="block text-900 font-medium mb-1"
+                    >{{ player.firstName }} {{ player.lastName }}</span
+                  >
+                  <div class="text-600">
+                    Title: {{ player.title }} Winrate: {{ player.winrate }}%
+                    Rating: {{ player.rating }}
+                  </div>
+                </div>
+              </div>
+              <div class="mt-2 md:mt-0 flex flex-nowrap">
+                <button
+                  pButton
+                  class="host-button p-button-rounded mr-1"
+                  (click)="izaberiIgraca(player, 0)"
+                >
+                  Domaćin
+                </button>
+                <button
+                  pButton
+                  class="guest-button p-button-rounded mr-1"
+                  (click)="izaberiIgraca(player, 1)"
+                >
+                  Gost
+                </button>
+              </div>
+            </li>
+          </ul>
+        </p-scrollPanel>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-3">
+  <div class="surface-card shadow-2 border-round p-4">
+    <div class="flex justify-content-between align-items-center mb-5">
+      <span class="text-xl text-900 font-medium">Utakmice u toku</span>
+    </div>
+    <div
+      class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+      style="border-radius: 8px"
+      *ngIf="currentGames.length === 0"
+    >
+      <div class="align-items-center flex">
+        <span class="line-height-3 hidden lg:block"
+          >Nijedna utakmica se ne igra trenutno!</span
+        >
+      </div>
+    </div>
+    <ul class="list-none p-0 m-0" *ngIf="games.length > 0">
+      <li
+        class="flex flex-column sm:flex-row sm:justify-content-between sm:align-items-center mb-5"
+        *ngFor="let game of currentGames"
+      >
+        <div class="flex align-items-center">
+          <span
+            class="block mr-3 surface-200 border-radius: 10px inline-flex justify-content-center align-items-center"
+            style="width: 58px; height: 58px; border-radius: 10px"
+          >
+            <img
+              src="assets/images/match.png"
+              style="width: 30px; height: 30px"
+            />
+          </span>
+          <div>
+            <div class="text-900 font-medium text-xl mb-2">
+              Domaćin : {{ game.hostName }}
+            </div>
+            <div class="text-900 font-medium text-xl mb-2">
+              Gost : {{ game.guestName }}
+            </div>
+          </div>
+          <div>
+            <div class="naziv-utakmice-label font-medium text-xl mb-2">
+              Naziv : {{ game.gameName }}
+            </div>
+          </div>
+        </div>
+        <div class="sm:text-right mt-3 md:mt-0">
+          <button
+            pButton
+            class="host-button p-button-rounded mr-1"
+            (click)="updateUtakmicu(game)"
+          >
+            Završi utakmicu
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="mt-3">
+  <div class="surface-card shadow-2 border-round p-4">
+    <div class="flex justify-content-between align-items-center mb-5">
+      <span class="text-xl text-900 font-medium">Odigrane utakmice</span>
+    </div>
+    <div
+      class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+      style="border-radius: 8px"
+      *ngIf="games.length === 0"
+    >
+      <div class="align-items-center flex">
+        <span class="line-height-3 hidden lg:block"
+          >Nema nijedne utakmice!</span
+        >
+      </div>
+    </div>
+    <ul class="list-none p-0 m-0" *ngIf="games.length > 0">
+      <li
+        class="flex flex-column sm:flex-row sm:justify-content-between sm:align-items-center mb-5"
+        *ngFor="let game of games"
+      >
+        <div class="flex align-items-center">
+          <span
+            class="block mr-3 surface-200 border-radius: 10px inline-flex justify-content-center align-items-center"
+            style="width: 58px; height: 58px; border-radius: 10px"
+          >
+            <img
+              src="assets/images/match.png"
+              style="width: 30px; height: 30px"
+            />
+          </span>
+          <div>
+            <div class="text-900 font-medium text-xl mb-2">
+              Domaćin : {{ game.hostName }}
+            </div>
+            <div class="text-900 font-medium text-xl mb-2">
+              Gost : {{ game.guestName }}
+            </div>
+          </div>
+          <div>
+            <div class="naziv-utakmice-label font-medium text-xl mb-2">
+              Naziv : {{ game.gameName }}
+            </div>
+          </div>
+          <span
+            class="obrisi-utakmicu-button-color text-sm py-1 px-3 ml-5 mb-1"
+            style="border-radius: 10px; cursor: pointer"
+            (click)="obrisiUtakmicu(game.id)"
+            >Obriši utakmicu</span
+          >
+        </div>
+        <div class="sm:text-right mt-3 md:mt-0">
+          <div>
+            <div class="text-900 font-medium text-xl mb-2">
+              Rezultat : {{ game.hostResult }}
+            </div>
+            <div class="text-900 font-medium text-xl mb-2">
+              Winrate : {{ game.guestResult }}
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

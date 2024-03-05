@@ -1,0 +1,68 @@
+<app-centered-dialog
+  [dialogTitle]="dialogTitle"
+  (onCancel)="handleCancel()"
+  (onSave)="handleSave()"
+>
+  <div [formGroup]="form" *ngIf="form">
+    <div class="w-full">
+      <app-field fieldLabel="Ime">
+        <input
+          class="inputfield w-full"
+          type="text"
+          pInputText
+          maxlength="150"
+          [formControl]="asFormControl(form.controls['firstName'])"
+        />
+      </app-field>
+      <app-field fieldLabel="Prezime">
+        <input
+          class="inputfield w-full"
+          type="text"
+          pInputText
+          maxlength="150"
+          [formControl]="asFormControl(form.controls['lastName'])"
+        />
+      </app-field>
+      <app-field fieldLabel="Datum rodjenja">
+        <app-calendar
+          class="inputfield w-full calendar"
+          [formCtrl]="asFormControl(form.controls['dateofBirth'])"
+        >
+        </app-calendar>
+      </app-field>
+      <app-field fieldLabel="Rejting">
+        <input
+          class="inputfield w-full"
+          type="text"
+          pInputText
+          maxlength="128"
+          [formControl]="asFormControl(form.controls['rating'])"
+        />
+      </app-field>
+      <app-field fieldLabel="Pozicija">
+        <app-position-dropdown
+          [formCtrl]="asFormControl(form.controls['position'])"
+        >
+        </app-position-dropdown>
+      </app-field>
+      <app-field fieldLabel="Procenat pobede %(winrate)">
+        <input
+          class="inputfield w-full"
+          type="text"
+          pInputText
+          maxlength="128"
+          [formControl]="asFormControl(form.controls['winrate'])"
+        />
+      </app-field>
+      <app-field fieldLabel="Titula">
+        <input
+          class="inputfield w-full"
+          type="text"
+          pInputText
+          maxlength="128"
+          [formControl]="asFormControl(form.controls['title'])"
+        />
+      </app-field>
+    </div>
+  </div>
+</app-centered-dialog>

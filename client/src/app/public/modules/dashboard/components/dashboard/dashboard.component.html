@@ -1,0 +1,137 @@
+<div class="grid">
+  <div class="col-12 md:col-6 lg:col-4">
+    <div class="surface-card shadow-2 p-3 border-round">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Broj igrača</span>
+          <div class="text-900 font-medium text-xl">
+            {{ dashboardData.brojIgraca }}
+          </div>
+        </div>
+      </div>
+      <span class="text-blue-700 font-medium">Prikaz je za tekuću sezonu</span>
+    </div>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <div class="surface-card shadow-2 p-3 border-round">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3"
+            >Ukupan broj utakmica</span
+          >
+          <div class="text-900 font-medium text-xl">
+            {{ dashboardData.brojUtakmica }}
+          </div>
+        </div>
+      </div>
+      <span class="text-green-600 font-medium">Prikaz je za tekuću sezonu</span>
+    </div>
+  </div>
+  <div class="col-12 md:col-6 lg:col-4">
+    <div class="surface-card shadow-2 p-3 border-round">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3"
+            >Ukupan broj turnira</span
+          >
+          <div class="text-900 font-medium text-xl">
+            {{ dashboardData.brojTurnira }}
+          </div>
+        </div>
+      </div>
+      <span class="text-purple-600 font-medium"
+        >Prikaz je za tekuću sezonu</span
+      >
+    </div>
+  </div>
+</div>
+<div class="col-12">
+  <div class="border-round">
+    <div class="mb-5 flex mt-5">
+      <div class="flex flex-column align-items-center" style="width: 2rem">
+        <span
+          class="bg-blue-500 text-0 flex align-items-center justify-content-center border-circle"
+          style="min-width: 2.5rem; min-height: 2.5rem"
+        >
+        </span>
+        <div
+          class="h-full bg-blue-500"
+          style="width: 2px; min-height: 4rem"
+        ></div>
+      </div>
+      <div class="ml-5 surface-card shadow-2 border-round p-3 flex-auto">
+        <div class="mb-3">
+          <span class="text-900 font-medium inline-block mr-3"
+            >Poslednji dodati igrač</span
+          >
+        </div>
+        <div class="line-height-3 text-900 mb-3">
+          {{ dashboardData.igrac?.firstName }} 
+          {{ dashboardData.igrac?.lastName }}
+        </div>
+        <div class="text-500 flex align-items-center">
+          <span class="mr-3">Rating : {{dashboardData.igrac?.rating}}</span>
+          <span class="mr-3">Winrate : {{dashboardData.igrac?.winrate}}%</span>
+          <span class="mr-3">Title : {{dashboardData.igrac?.title}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5 flex">
+      <div class="flex flex-column align-items-center" style="width: 2rem">
+        <span
+          class="bg-orange-500 text-0 flex align-items-center justify-content-center border-circle"
+          style="min-width: 2.5rem; min-height: 2.5rem"
+        >
+        </span>
+        <div
+          class="h-full bg-orange-500"
+          style="width: 2px; min-height: 4rem"
+        ></div>
+      </div>
+      <div class="ml-5 surface-card shadow-2 border-round p-3 flex-auto">
+        <div class="mb-3">
+          <span class="text-900 text-xl font-medium inline-block mr-3"
+            >Poslednja odigrana utakmica</span
+          >
+        </div>
+        <div class="line-height-3 text-900 mb-3">
+          {{ dashboardData.utakmica?.gameName }} 
+        </div>
+        <div class="text-500 flex align-items-center">
+          <span class="mr-3">Domaćin : {{dashboardData.utakmica?.hostName}}</span>
+          <span class="mr-3">Gost : {{dashboardData.utakmica?.guestName}}</span>
+          <span>Rezultat : {{dashboardData.utakmica?.hostResult}}:{{dashboardData.utakmica?.guestResult}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="mb-5 flex">
+      <div class="flex flex-column align-items-center" style="width: 2rem">
+        <span
+          class="bg-purple-500 text-0 flex align-items-center justify-content-center border-circle"
+          style="min-width: 2.5rem; min-height: 2.5rem"
+        >
+          <i class="pi pi-image"></i>
+        </span>
+        <div
+          class="h-full bg-purple-500"
+          style="width: 2px; min-height: 4rem"
+        ></div>
+      </div>
+      <div class="ml-5 surface-card shadow-2 border-round p-3 flex-auto">
+        <div class="mb-3">
+          <span class="text-900 font-medium inline-block mr-3"
+            >Poslednji kreirani turnir</span
+          >
+        </div>
+        <div class="line-height-3 text-700 mb-3">
+          {{ dashboardData.turnir?.name }} 
+        </div>
+        <div class="text-500 flex align-items-center">
+          <span class="mr-3">Format : {{ dashboardData.turnir?.format }}</span>
+          <span class="mr-3">Place : {{ dashboardData.turnir?.place }}</span>
+          <span>Prize : {{ dashboardData.turnir?.prize }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

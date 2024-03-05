@@ -1,0 +1,255 @@
+<div class="grid">
+  <div class="col-12">
+    <div>
+      <div class="surface-card shadow-2 border-round p-4">
+        <div class="flex justify-content-between align-items-center mb-3">
+          <span class="text-xl text-900 font-medium">Kreiraj turnir</span>
+          <div>
+            <button
+              pButton
+              class="kreiraj-utakmicu-button p-button-rounded"
+              (click)="kreirajTurnir()"
+            >
+              Kreiraj
+            </button>
+            <button
+              pButton
+              class="ml-3 p-button-rounded"
+              [ngClass]="{
+                'prikazi-utakmice-button': !utakmiceSelectVisible,
+                'sakrij-utakmice-button': utakmiceSelectVisible
+              }"
+              (click)="setUtakmiceVisibility()"
+            >
+              {{
+                utakmiceSelectVisible ? "Sakrij utakmice" : "Prikazi utakmice"
+              }}
+            </button>
+          </div>
+        </div>
+        <div [formGroup]="form" *ngIf="form">
+          <div class="grid">
+            <div class="col-3">
+              <app-field fieldLabel="Naziv">
+                <input
+                  class="inputfield w-full"
+                  type="text"
+                  pInputText
+                  maxlength="150"
+                  [formControl]="asFormControl(form.controls['name'])"
+                />
+              </app-field>
+            </div>
+            <div class="col3">
+              <app-field fieldLabel="Format">
+                <input
+                  class="inputfield w-full"
+                  type="text"
+                  pInputText
+                  maxlength="150"
+                  [formControl]="asFormControl(form.controls['format'])"
+                />
+              </app-field>
+            </div>
+            <div class="col3">
+              <app-field fieldLabel="Mesto">
+                <input
+                  class="inputfield w-full"
+                  type="text"
+                  pInputText
+                  maxlength="150"
+                  [formControl]="asFormControl(form.controls['place'])"
+                />
+              </app-field>
+            </div>
+            <div class="col3">
+              <app-field fieldLabel="Nagrada">
+                <input
+                  class="inputfield w-full"
+                  type="text"
+                  pInputText
+                  maxlength="150"
+                  [formControl]="asFormControl(form.controls['prize'])"
+                />
+              </app-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid mt-5" *ngIf="utakmiceSelectVisible">
+        <div class="col-6">
+          <div
+            class="surface-card shadow-2 border-round p-4"
+            style="height: 450px"
+          >
+            <div class="flex justify-content-between align-items-center mb-5">
+              <span class="text-xl text-900 font-medium"
+                >Brza pretraga utakmica</span
+              >
+            </div>
+            <p-scrollPanel [style]="{ width: '100%', height: '350px' }">
+              <div
+                class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+                style="border-radius: 8px"
+                *ngIf="!tempGames"
+              >
+                <div class="align-items-center flex">
+                  <span class="line-height-3 hidden lg:block"
+                    >Nema igrača. Unesite igrače na stranici igrači!</span
+                  >
+                </div>
+              </div>
+              <ul class="list-none p-0 m-0">
+                <li
+                  class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+                  *ngFor="let game of tempGames"
+                >
+                  <div class="flex">
+                    <img
+                      src="assets/images/match.png"
+                      class="mr-3"
+                      style="width: 45px; height: 45px"
+                    />
+                    <div>
+                      <span class="block text-900 font-medium mb-1">{{
+                        game.gameName
+                      }}</span>
+                      <div class="text-600">
+                        Domaćin : {{ game.hostName }} - Gost:
+                        {{ game.guestName }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-2 md:mt-0 flex flex-nowrap">
+                    <button
+                      pButton
+                      class="host-button p-button-rounded mr-1"
+                      (click)="dodajUtakmicu(game)"
+                    >
+                      Dodaj
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </p-scrollPanel>
+          </div>
+        </div>
+        <div class="col-6">
+          <div
+            class="surface-card shadow-2 border-round p-4"
+            style="height: 450px"
+          >
+            <div class="flex justify-content-between align-items-center mb-5">
+              <span class="text-xl text-900 font-medium"
+                >Odabrane utakmice</span
+              >
+            </div>
+            <p-scrollPanel [style]="{ width: '100%', height: '350px' }">
+              <div
+                class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+                style="border-radius: 8px"
+                *ngIf="chosenGames.length === 0"
+              >
+                <div class="align-items-center flex">
+                  <span class="line-height-3 hidden lg:block"
+                    >Niste odabrali nijednu utakmicu!</span
+                  >
+                </div>
+              </div>
+              <ul class="list-none p-0 m-0">
+                <li
+                  class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4"
+                  *ngFor="let game of chosenGames"
+                >
+                  <div class="flex">
+                    <img
+                      src="assets/images/match.png"
+                      class="mr-3"
+                      style="width: 45px; height: 45px"
+                    />
+                    <div>
+                      <span class="block text-900 font-medium mb-1">{{
+                        game.gameName
+                      }}</span>
+                      <div class="text-600">
+                        Domaćin : {{ game.hostName }} - Gost:
+                        {{ game.guestName }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-2 md:mt-0 flex flex-nowrap">
+                    <button
+                      pButton
+                      class="izbaci-utakmicu-button-color p-button-rounded mr-1"
+                      (click)="izbaciUtakmicu(game)"
+                    >
+                      Izbaci
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </p-scrollPanel>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-5">
+      <div class="surface-card shadow-2 border-round p-4">
+        <div class="flex justify-content-between align-items-center mb-5">
+          <span class="text-xl text-900 font-medium">Svi turniri</span>
+        </div>
+        <div
+          class="bg-blue-700 text-white p-3 flex justify-content-between align-items-center flex-wrap shadow-2"
+          style="border-radius: 8px"
+          *ngIf="tournaments.length === 0"
+        >
+          <div class="align-items-center flex">
+            <span class="line-height-3 hidden lg:block"
+              >Trenutno nema nijednog kreiranog turnira!</span
+            >
+          </div>
+        </div>
+        <ul class="list-none p-0 m-0" *ngIf="games.length > 0">
+          <li
+            class="flex flex-column sm:flex-row sm:justify-content-between sm:align-items-center mb-5"
+            *ngFor="let tournament of tournaments"
+          >
+            <div class="flex align-items-center">
+              <span
+                class="block mr-3 surface-200 border-radius: 10px inline-flex justify-content-center align-items-center"
+                style="width: 58px; height: 58px; border-radius: 10px"
+              >
+                <img
+                  src="assets/images/star.png"
+                  style="width: 30px; height: 30px"
+                />
+              </span>
+              <div>
+                <div class="text-900 font-medium text-xl mb-2">
+                  Naziv : {{ tournament.name }}
+                </div>
+                <div class="text-600 font-medium text-l mb-2">
+                  Format : {{ tournament.format }}
+                </div>
+              </div>
+              <div>
+                <div class="nagrada-label font-medium text-xl mb-2">
+                  Nagrada : {{ tournament.prize }}
+                </div>
+              </div>
+            </div>
+            <div class="sm:text-right mt-3 md:mt-0">
+              <button
+                pButton
+                class="sakrij-utakmice-button p-button-rounded mr-1"
+                (click)="obrisiTurnir(tournament.id ?? 0)"
+              >
+                Obriši turnir
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

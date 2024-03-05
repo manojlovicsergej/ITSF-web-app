@@ -1,0 +1,398 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeflex/primeflex.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+
+body {
+  margin: 0;
+  font-family: "Montserrat";
+}
+
+.fc-event-title {
+  visibility: hidden !important;
+  /* hides event title */
+}
+
+.bg-black {
+  background-color: #06367a !important;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1rem !important;
+}
+
+.fc-toolbar-title {
+  font-weight: 500;
+}
+
+.fc.fc-theme-standard a {
+  font-weight: 500;
+}
+
+.fc.fc-theme-standard .fc-toolbar .fc-button {
+  background-color: transparent;
+  color: #64748b;
+  border-color: transparent;
+  // color: #ffffff;
+  // background: #64748b;
+  // border: 1px solid #64748b;
+}
+
+.fc.fc-theme-standard .fc-toolbar .fc-button:enabled:hover {
+  background: rgba(100, 116, 139, 0.04);
+  border-color: transparent;
+  color: #64748b;
+}
+
+.fc.fc-theme-standard .fc-toolbar .fc-button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #b0b9c6, 0 1px 2px 0 black;
+}
+
+.fc.fc-theme-standard .fc-toolbar .fc-button:disabled {
+  background-color: transparent;
+  color: #64748b;
+  border-color: transparent;
+  opacity: 0.6;
+  cursor: default;
+}
+
+// box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #b0b9c6, 0 1px 2px 0 black;
+
+
+.p-overlaypanel:after,
+.p-overlaypanel:before {
+  display: none !important;
+}
+
+.p-badge {
+  min-width: 1rem;
+  height: 1rem;
+  line-height: 1rem;
+}
+
+.xng-breadcrumb-root {
+
+  border-radius: 4px;
+}
+
+.xng-breadcrumb-separator {
+  padding: 0 0.8rem;
+}
+
+.xng-breadcrumb-link,
+.xng-breadcrumb-separator {
+  color: #BDBDBD !important;
+}
+
+.xng-breadcrumb-trail {
+  color: #38cade !important;
+}
+
+.p-button-link {
+  color: #38cade !important;
+}
+
+.p-inputtext {
+  padding: 8px !important;
+}
+
+.field {
+  margin-bottom: 8px;
+}
+
+.limited-width {
+  margin-top: 10px;
+  max-width: 1300px;
+  min-width: 1300px;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+
+.p-dialog .p-dialog-content {
+  border-radius: 0.6rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.xng-breadcrumb-item {
+  z-index: 1000;
+}
+
+.m-booking {
+  padding: 65px 0;
+  background-color: #38CADE;
+  position: relative;
+}
+
+@media screen and (min-width: 992px) {
+  .m-booking {
+    padding: 65px 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .m-booking {
+    padding: 65px 0;
+  }
+}
+
+.m-booking_content {
+  position: relative;
+  z-index: 999;
+}
+
+.m-booking_bcg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.m-booking_bcg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.m-vision {
+  padding: 100px 0;
+  position: relative;
+}
+
+@media screen and (min-width: 992px) {
+  .m-vision {
+    padding: 50px 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .m-vision {
+    padding: 70px 0;
+  }
+}
+
+.m-vision_quote {
+  margin-top: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .m-vision_quote {
+    margin-top: 80px;
+  }
+}
+
+.m-header {
+  padding-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .m-header {
+    padding-top: 40px;
+  }
+}
+
+.m-header.-paddingBottom {
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .m-header.-paddingBottom {
+    padding-bottom: 40px;
+  }
+}
+
+.m-header_logoLink {
+  display: inline-block;
+}
+
+.m-header_navWrapp {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  z-index: 999;
+  background-color: #000000;
+  padding: 100px 50px;
+  align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .m-header_navWrapp {
+    display: flex;
+    width: auto;
+    height: auto;
+    position: static;
+    background-color: transparent;
+    padding: 0;
+    align-items: flex-end;
+  }
+}
+
+.m-header_info {
+  margin-bottom: 30px;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 1200px) {
+  .m-header_info {
+    font-size: 16px;
+  }
+}
+
+// .m-header_info .mail {
+//   margin-right: 20px;
+// }
+
+.m-header_nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+@media screen and (min-width: 1024px) {
+  .m-header_nav {
+    display: initial;
+    margin-top: 0;
+  }
+}
+
+.m-header_nav--link {
+  margin-bottom: 30px;
+  font-size: 20px;
+  position: relative;
+  text-decoration: none;
+    color: #ffff;
+}
+
+.m-header_nav--link.-noUnderline::after {
+  width: 0 !important;
+  display: none !important;
+}
+
+@media screen and (min-width: 1024px) {
+  .m-header_nav--link {
+    font-size: initial;
+    margin-bottom: 0;
+    margin-right: 30px;
+    transition: 0.2s;
+  }
+
+  .m-header_nav--link:last-child {
+    margin-right: 0;
+  }
+
+  .m-header_nav--link::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #ffffff !important;
+    transition: 0.3s;
+  }
+
+  .m-header_nav--link:hover {
+    cursor: pointer;
+  }
+
+  .m-header_nav--link:hover::after {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .m-header_nav {
+    font-size: 18px;
+  }
+
+  .m-header_nav--link {
+    margin-right: 50px;
+  }
+
+  .m-header_nav--link:last-child {
+    margin-right: 0;
+  }
+}
+
+
+.a-logo {
+  max-width: 120px;
+}
+
+@media screen and (min-width: 768px) {
+  .a-logo {
+    max-width: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .a-logo {
+    max-width: 200px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .a-logo {
+    max-width: 280px;
+  }
+}
+
+.a-link {
+  transition: 0.2s;
+  text-decoration: none;
+  color: #ffff;
+}
+
+.a-link:hover {
+  color: #38CADE;
+}
+
+
+.item-badge{
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 500;
+  // line-height: 12px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.4rem;
+}
+
+.event-type {
+  &-discovery {
+      background-color: var(--blue-50);
+      color: var(--blue-400);
+  }
+  &-session {
+      background-color: var(--teal-50);
+      color: var(--blue-400);
+  }
+  &-follow-up {
+      background-color: var(--green-50);
+      color: var(--green-400);
+  }
+}
+
+
+.fc-daygrid-event {
+  background-color: #38cade;
+}
+
+.fc-event-time {
+  display: none;
+}
