@@ -10,6 +10,13 @@ public class TournamentDto : ITournamentDto
     public string Place { get; set; }
     public string Prize { get; set; }
     public List<GameDto>? Games { get; set; }
+
+    public TournamentDto(){
+        Name = "-";
+        Format = "-";
+        Place = "-";
+        Prize = "-";
+    }
 }
 
 public interface ITournamentDto

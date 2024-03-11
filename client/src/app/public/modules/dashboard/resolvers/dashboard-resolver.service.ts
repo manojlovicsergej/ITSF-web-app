@@ -17,6 +17,7 @@ export class DashboardResolver implements Resolve<DashboardDto> {
   ): Observable<DashboardDto> | Promise<DashboardDto> | DashboardDto {
     return this._client.getDashboardData().pipe(
       map((res) => {
+        console.log(res);
         return res;
       }),
       catchError(this.errorHandler),

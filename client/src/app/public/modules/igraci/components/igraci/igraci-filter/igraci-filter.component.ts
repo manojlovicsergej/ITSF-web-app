@@ -24,19 +24,18 @@ export class IgraciFilterComponent implements OnInit {
 
   ngOnInit(): void {
     // init form
-    this.form = this._fb.group<PlayerFilterRequest>({
-      position: new FormControl(undefined),
-      rating: new FormControl(null),
-      winrate: new FormControl(null),
-    });
-
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
-    ];
+    // this.form = this._fb.group<PlayerFilterRequest>({
+    //   position: new FormControl(undefined),
+    //   rating: new FormControl(null),
+    //   winrate: new FormControl(null),
+    // });
+    // this.cities = [
+    //   { name: 'New York', code: 'NY' },
+    //   { name: 'Rome', code: 'RM' },
+    //   { name: 'London', code: 'LDN' },
+    //   { name: 'Istanbul', code: 'IST' },
+    //   { name: 'Paris', code: 'PRS' },
+    // ];
   }
 
   protected readonly asFormControl = asFormControl;

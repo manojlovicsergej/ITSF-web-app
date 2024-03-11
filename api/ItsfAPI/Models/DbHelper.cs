@@ -262,32 +262,36 @@ public class DbHelper
         Tournament turnir = _context.Tournaments.OrderByDescending(x => x.Id).FirstOrDefault();
         Game utakmica = _context.Games.OrderByDescending(x => x.Id).FirstOrDefault();
 
-        PlayerDto igracDto = new PlayerDto()
-        {
-            FirstName = igrac.FirstName,
-            LastName = igrac.LastName,
-            Position = igrac.Position,
-            Rating = igrac.Rating,
-            Winrate = igrac.Winrate,
-            Title = igrac.Title
-        };
+        PlayerDto igracDto = new PlayerDto();
+        TournamentDto tournamentDto = new TournamentDto();
+        GameDto gameDto = new GameDto();
 
-        TournamentDto turnirDto = new TournamentDto()
+        if (igrac is not null)
         {
-            Name = turnir.Name,
-            Format = turnir.Format,
-            Place = turnir.Place,
-            Prize = turnir.Prize
-        };
+            igracDto.FirstName = igrac.FirstName;
+            igracDto.LastName = igrac.LastName;
+            igracDto.Position = igrac.Position;
+            igracDto.Rating = igrac.Rating;
+            igracDto.Winrate = igrac.Winrate;
+            igracDto.Title = igrac.Title;
+        }
 
-        GameDto utakmicaDto = new GameDto()
+        if (turnir is not null)
         {
-            GameName = utakmica.GameName,
-            HostName = utakmica.HostName,
-            HostResult = utakmica.HostResult,
-            GuestName = utakmica.GuestName,
-            GuestResult = utakmica.GuestResult
-        };
+            tournamentDto.Name = turnir.Name;
+            tournamentDto.Format = turnir.Format;
+            tournamentDto.Place = turnir.Place;
+            tournamentDto.Prize = turnir.Prize;
+        }
+
+        if (gameDto is not null)
+        {
+            gameDto.GameName = utakmica.GameName;
+            gameDto.HostName = utakmica.HostName;
+            gameDto.HostResult = utakmica.HostResult;
+            gameDto.GuestName = utakmica.GuestName;
+            gameDto.GuestResult = utakmica.GuestResult;
+        }
 
         return new DashboardDto()
         {
@@ -295,8 +299,8 @@ public class DbHelper
             BrojUtakmica = brojUtakmica,
             BrojTurnira = brojTurnira,
             Igrac = igracDto,
-            Turnir = turnirDto,
-            Utakmica = utakmicaDto
+            Turnir = tournamentDto,
+            Utakmica = gameDto
         };
     }
 }

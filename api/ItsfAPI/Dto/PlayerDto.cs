@@ -12,6 +12,16 @@ public class PlayerDto : IPlayerDto
     public int Rating { get; set; }
     public decimal Winrate { get; set; }
     public string Title { get; set; }
+
+    public PlayerDto()
+    {
+        FirstName = "-";
+        LastName = "-";
+        Position = Position.ATTACKER;
+        Rating = 0;
+        Winrate = 0;
+        Title = "-";
+    }
 }
 
 public interface IPlayerDto

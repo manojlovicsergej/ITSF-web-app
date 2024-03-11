@@ -38,3 +38,44 @@
 /home/sergej/Desktop/ITSF app/api/ItsfAPI/obj/Debug/net7.0/ItsfAPI.pdb
 /home/sergej/Desktop/ITSF app/api/ItsfAPI/obj/Debug/net7.0/ItsfAPI.genruntimeconfig.cache
 /home/sergej/Desktop/ITSF app/api/ItsfAPI/obj/Debug/net7.0/ref/ItsfAPI.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\appsettings.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\ItsfAPI.exe
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\ItsfAPI.deps.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\ItsfAPI.runtimeconfig.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\ItsfAPI.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\ItsfAPI.pdb
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Humanizer.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Npgsql.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.csproj.AssemblyReference.cache
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.AssemblyInfoInputs.cache
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.AssemblyInfo.cs
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.csproj.CoreCompileInputs.cache
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.sourcelink.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\staticwebassets\msbuild.ItsfAPI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\staticwebassets\msbuild.build.ItsfAPI.props
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.ItsfAPI.props
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ItsfAPI.props
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\scopedcss\bundle\ItsfAPI.styles.css
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.csproj.CopyComplete
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\refint\ItsfAPI.dll
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.pdb
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ItsfAPI.genruntimeconfig.cache
+C:\Users\manoj\Desktop\ITSF-web-app\api\ItsfAPI\obj\Debug\net7.0\ref\ItsfAPI.dll

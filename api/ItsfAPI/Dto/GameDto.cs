@@ -9,6 +9,15 @@ public class GameDto : IGameDto
     public string GuestName { get; set; }
     public int GuestResult { get; set; }
     public ICollection<PlayerGamesDto> GamePlayers { get; set; }
+
+    public GameDto()
+    {
+        GameName = "-";
+        HostName = "-";
+        HostResult = 0;
+        GuestName = "-";
+        GuestResult = 0;
+    }
 }
 
 public interface IGameDto
