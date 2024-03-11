@@ -1,6 +1,7 @@
 ﻿using ItsfAPI.Dto;
 using ItsfAPI.EfCore;
 using ItsfAPI.Models;
+using ItsfAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ItsfAPI.Controllers;
@@ -10,7 +11,7 @@ namespace ItsfAPI.Controllers;
 public class ItsfController : ControllerBase
 {
     private readonly DbHelper _dbHelper;
-    
+
     public ItsfController(ApplicationDbContext context)
     {
         _dbHelper = new DbHelper(context);
@@ -40,12 +41,12 @@ public class ItsfController : ControllerBase
     }
 
     [HttpGet("get-all-players-by-filter")]
-    public IActionResult GetAllPlayersByFilter([FromBody])
+    public IActionResult GetAllPlayersByFilter([FromBody] PlayerFilterRequest playerFilterRequest)
     {
         ResponseType type = ResponseType.Success;
         try
         {
-            ICollection<PlayerDto> response = _dbHelper.GetPlayers();
+            ICollection<PlayerDto> response = _dbHelper.GetPlayersByFilter(playerFilterRequest);
             type = ResponseType.Success;
             if (!response.Any())
             {
@@ -82,7 +83,7 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when get all games");
         }
     }
-    
+
     [HttpGet("get-all-tournaments")]
     public IActionResult GetAllTournaments()
     {
@@ -104,7 +105,7 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when get all games");
         }
     }
-    
+
     [HttpGet("get-current-games")]
     public IActionResult GetCurrentGames()
     {
@@ -141,7 +142,7 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when adding player");
         }
     }
-    
+
     [HttpPost("add-tournament")]
     public IActionResult AddTournament([FromBody] TournamentDto tournamentDto)
     {
@@ -156,7 +157,7 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when adding player");
         }
     }
-    
+
     [HttpPost("add-game")]
     public IActionResult AddGame([FromBody] GameDto gameDto)
     {
@@ -186,14 +187,14 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when updating player");
         }
     }
-    
+
     [HttpPut("update-game")]
     public IActionResult UpdateGame([FromBody] ZavrsiUtakmicuDto zavrsiUtakmicuDto)
     {
         ResponseType type = ResponseType.Success;
         try
         {
-            _dbHelper.UpdateGame(zavrsiUtakmicuDto.GameId,zavrsiUtakmicuDto.HostResult,zavrsiUtakmicuDto.GuestResult);
+            _dbHelper.UpdateGame(zavrsiUtakmicuDto.GameId, zavrsiUtakmicuDto.HostResult, zavrsiUtakmicuDto.GuestResult);
             return Ok(ResponseHandler.GetAppResponse(type, zavrsiUtakmicuDto));
         }
         catch (Exception e)
@@ -216,7 +217,7 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when adding player");
         }
     }
-    
+
     [HttpDelete("delete-tournament")]
     public IActionResult DeleteTournament([FromQuery] int tournamentId)
     {
@@ -231,7 +232,7 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when adding player");
         }
     }
-    
+
     [HttpDelete("delete-game")]
     public IActionResult DeleteGame([FromQuery] int gameId)
     {
@@ -246,7 +247,7 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when adding player");
         }
     }
-    
+
     [HttpGet("get-dashboard")]
     public IActionResult GetDashboardData()
     {
@@ -255,7 +256,7 @@ public class ItsfController : ControllerBase
         {
             DashboardDto response = _dbHelper.GetDashboardData();
             type = ResponseType.Success;
-            
+
             if (response is null)
             {
                 type = ResponseType.NotFound;
@@ -269,5 +270,5 @@ public class ItsfController : ControllerBase
             return BadRequest("Error when get dashboard data");
         }
     }
-    
+
 }

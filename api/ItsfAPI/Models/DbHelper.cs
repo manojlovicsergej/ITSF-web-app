@@ -1,5 +1,6 @@
 ﻿using ItsfAPI.Dto;
 using ItsfAPI.EfCore;
+using ItsfAPI.Requests;
 using Microsoft.EntityFrameworkCore;
 
 namespace ItsfAPI.Models;
@@ -33,12 +34,37 @@ public class DbHelper
         return players;
     }
 
+    public List<PlayerDto> GetPlayersByFilter(PlayerFilterRequest playerFilterRequest)
+    {
+        List<PlayerDto> players = new List<PlayerDto>();
+
+        var list = _context.Players
+            .Where(x => x.Position == playerFilterRequest.Position)
+            .Where(x => x.Rating > playerFilterRequest.Rating)
+            .Where(x => x.Winrate > playerFilterRequest.Winrate)
+            .ToList();
+
+        list.ForEach(x => players.Add(new PlayerDto
+        {
+            Id = x.Id,
+            FirstName = x.FirstName,
+            LastName = x.LastName,
+            DateOfBirth = x.DateOfBirth,
+            Position = x.Position,
+            Rating = x.Rating,
+            Winrate = x.Winrate,
+            Title = x.Title
+        }));
+
+        return players;
+    }
+
     public List<GameDto> GetAllGames()
     {
         List<GameDto> games = new List<GameDto>();
         var list = _context.Games
             .Include(x => x.GamePlayers)
-            .Where(x => x.HostResult !=0 || x.GuestResult != 0)
+            .Where(x => x.HostResult != 0 || x.GuestResult != 0)
             .ToList();
 
         list.ForEach(x => games.Add(new GameDto
@@ -124,14 +150,14 @@ public class DbHelper
 
         _context.SaveChanges();
     }
-    
+
     public void DeleteTournament(int tournamentId)
     {
         var tournament = _context.Tournaments.Where(x => x.Id == tournamentId).FirstOrDefault();
         var games = _context.Games.Where(x => x.TournamentId == tournament.Id).ToList();
 
         foreach (var game in games)
-        { 
+        {
             game.UpdateGameToTournament(null);
             _context.Update(game);
             _context.SaveChanges();
@@ -185,7 +211,7 @@ public class DbHelper
 
         _context.SaveChanges();
     }
-    
+
     public List<TournamentDto> GetAllTournaments()
     {
         List<TournamentDto> tournaments = new List<TournamentDto>();
@@ -202,7 +228,7 @@ public class DbHelper
 
         return tournaments;
     }
-    
+
     public void AddTournament(TournamentDto tournamentDto)
     {
         Tournament tournament = new Tournament()
@@ -212,7 +238,7 @@ public class DbHelper
             Place = tournamentDto.Place,
             Prize = tournamentDto.Prize,
         };
-        
+
         _context.Tournaments.Add(tournament);
         _context.SaveChanges();
 
@@ -220,12 +246,12 @@ public class DbHelper
         {
             Game game = _context.Games.Where(x => x.Id == gameDto.Id).FirstOrDefault();
             game.UpdateGameToTournament(tournament.Id);
-            
+
             _context.Games.Update(game);
             _context.SaveChanges();
         }
     }
-    
+
     public DashboardDto GetDashboardData()
     {
         int brojIgraca = _context.Players.Count();

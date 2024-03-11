@@ -1,15 +1,38 @@
 <div class="card flex justify-content-start mb-5">
   <div class="flex flex-row align-items-center">
-    <div class="flex text-2xl">Filter kriterijum :</div>
-    <div class="flex ml-3">
-      <p-dropdown
-        class="dropdown-size"
-        [options]="cities"
-        [(ngModel)]="selectedCity"
-        optionLabel="name"
-        [showClear]="true"
-        placeholder="Select a City"
-      ></p-dropdown>
+    <div>
+      <app-field [fieldLabel]="'Pozicija'">
+        <p-dropdown
+          class="dropdown-size"
+          [options]="cities"
+          [(ngModel)]="selectedCity"
+          optionLabel="name"
+          [showClear]="true"
+          placeholder="Select a City"
+        ></p-dropdown>
+      </app-field>
+    </div>
+    <div>
+      <app-field [fieldLabel]="'WinRate veci od'">
+        <input
+          class="inputfield w-full"
+          type="text"
+          pInputText
+          maxlength="150"
+          [formControl]="asFormControl(form.controls['winrate'])"
+        />
+      </app-field>
+    </div>
+    <div>
+      <app-field [fieldLabel]="'Rating veci od'">
+        <input
+          class="inputfield w-full"
+          type="number"
+          pInputText
+          maxlength="150"
+          [formControl]="asFormControl(form.controls['rating'])"
+        />
+      </app-field>
     </div>
   </div>
 </div>

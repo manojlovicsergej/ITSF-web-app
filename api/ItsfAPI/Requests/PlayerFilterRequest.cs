@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ItsfAPI.Enums;
 
-namespace ItsfAPI.Requests
+namespace ItsfAPI.Requests;
+public class PlayerFilterRequest
 {
-    public class PlayerFilterRequest
-    {
-        
-    }
+    public Position Position { get; set; }
+    public int Rating { get; set; }
+    public decimal Winrate { get; set; }
 }
