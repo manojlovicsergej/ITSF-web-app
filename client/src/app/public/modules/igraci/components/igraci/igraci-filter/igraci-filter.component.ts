@@ -1,41 +1,72 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { PlayerHttpService } from 'src/app/shared/http/player.http.service';
+import { PlayerDto } from 'src/app/shared/models/player-dto';
 import { PlayerFilterRequest } from 'src/app/shared/models/player-filter-request';
 import { Position } from 'src/app/shared/models/position-type';
 import { asFormControl } from 'src/app/shared/services/useful-things.service';
-
-interface City {
-  name: string;
-  code: string;
-}
+import { IgraciService } from '../igraci.service';
 
 @Component({
   selector: 'app-igraci-filter',
   templateUrl: './igraci-filter.component.html',
   styleUrls: ['./igraci-filter.component.scss'],
 })
-export class IgraciFilterComponent implements OnInit {
-  cities: City[] | undefined;
-  selectedCity: City | undefined;
+export class IgraciFilterComponent implements OnInit, OnDestroy {
+  private _subs: Subscription = new Subscription();
 
   form!: FormGroup;
+  selectedPlayers: PlayerDto[] = [];
 
-  constructor(private _fb: FormBuilder) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _playerClient: PlayerHttpService,
+    private _igraciService: IgraciService
+  ) {}
 
   ngOnInit(): void {
     // init form
-    // this.form = this._fb.group<PlayerFilterRequest>({
-    //   position: new FormControl(undefined),
-    //   rating: new FormControl(null),
-    //   winrate: new FormControl(null),
-    // });
-    // this.cities = [
-    //   { name: 'New York', code: 'NY' },
-    //   { name: 'Rome', code: 'RM' },
-    //   { name: 'London', code: 'LDN' },
-    //   { name: 'Istanbul', code: 'IST' },
-    //   { name: 'Paris', code: 'PRS' },
-    // ];
+    this.form = this.GetPlayerFilterRequestFormGroup();
+
+    this.form.valueChanges.subscribe(() => {
+      this._igraciService.setSelectedPlayers = this._loadAllPlayers();
+    });
+  }
+
+  private _loadAllPlayers(): PlayerDto[] {
+    this._subs.add(
+      this._playerClient
+        .getAllPlayersByFilter(this.form.value)
+        .subscribe((res) => {
+          this.selectedPlayers = res;
+        })
+    );
+    return this.selectedPlayers;
+  }
+
+  resetFilter() {
+    this.form.reset();
+  }
+
+  public GetPlayerFilterRequestFormGroup(
+    model?: PlayerFilterRequest
+  ): FormGroup {
+    return this._fb.group({
+      position: new FormControl(Position.EMPTY),
+      winrate: new FormControl(null),
+      rating: new FormControl(null),
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._subs.unsubscribe();
   }
 
   protected readonly asFormControl = asFormControl;

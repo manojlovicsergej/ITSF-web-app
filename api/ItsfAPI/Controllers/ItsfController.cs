@@ -40,7 +40,7 @@ public class ItsfController : ControllerBase
         }
     }
 
-    [HttpGet("get-all-players-by-filter")]
+    [HttpPost("get-all-players-by-filter")]
     public IActionResult GetAllPlayersByFilter([FromBody] PlayerFilterRequest playerFilterRequest)
     {
         ResponseType type = ResponseType.Success;

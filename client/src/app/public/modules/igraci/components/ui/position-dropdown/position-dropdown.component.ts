@@ -22,6 +22,10 @@ export class PositionDropdownComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
+        label: "Prazno",
+        value : Position.EMPTY
+      },
+      {
         label: "Napadač",
         value: Position.ATTACKER,
       },

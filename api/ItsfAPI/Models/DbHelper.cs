@@ -39,9 +39,9 @@ public class DbHelper
         List<PlayerDto> players = new List<PlayerDto>();
 
         var list = _context.Players
-            .Where(x => x.Position == playerFilterRequest.Position)
-            .Where(x => x.Rating > playerFilterRequest.Rating)
-            .Where(x => x.Winrate > playerFilterRequest.Winrate)
+            .Where(x => x.Position == playerFilterRequest.Position ||
+                   x.Rating > playerFilterRequest.Rating ||
+                   x.Winrate > playerFilterRequest.Winrate)
             .ToList();
 
         list.ForEach(x => players.Add(new PlayerDto

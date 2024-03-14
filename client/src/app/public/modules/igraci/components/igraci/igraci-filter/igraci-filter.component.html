@@ -1,15 +1,11 @@
-<!-- <div class="card flex justify-content-start mb-5">
+<div class="card flex justify-content-start mb-5">
   <div class="flex flex-row align-items-center">
     <div>
-      <app-field [fieldLabel]="'Pozicija'">
-        <p-dropdown
-          class="dropdown-size"
-          [options]="cities"
-          [(ngModel)]="selectedCity"
-          optionLabel="name"
-          [showClear]="true"
-          placeholder="Select a City"
-        ></p-dropdown>
+      <app-field fieldLabel="Pozicija">
+        <app-position-dropdown
+          [formCtrl]="asFormControl(form.controls['position'])"
+        >
+        </app-position-dropdown>
       </app-field>
     </div>
     <div>
@@ -34,5 +30,8 @@
         />
       </app-field>
     </div>
+    <div class="flex ml-3">
+      <button pButton (click)="resetFilter()">Reset filter</button>
+    </div>
   </div>
-</div> -->
+</div>

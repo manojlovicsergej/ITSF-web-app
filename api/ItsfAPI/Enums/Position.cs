@@ -9,4 +9,7 @@ public enum Position
 
     [Description("Defender")]
     DEFENDER = 1,
+
+    [Description("Empty")]
+    EMPTY = 2
 }

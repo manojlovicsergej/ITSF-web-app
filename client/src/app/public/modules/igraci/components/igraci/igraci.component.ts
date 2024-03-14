@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PlayerHttpService } from 'src/app/shared/http/player.http.service';
 import { PlayerDto } from 'src/app/shared/models/player-dto';
+import { IgraciService } from './igraci.service';
 
 @Component({
   selector: 'app-igraci',
@@ -15,22 +16,25 @@ export class IgraciComponent implements OnInit, OnDestroy {
   /** Props */
   players: PlayerDto[] = [];
 
-  constructor(private _playerHttp: PlayerHttpService) {
+  constructor(
+    private _playerHttp: PlayerHttpService,
+    private igracService : IgraciService 
+  ) {
     this._subs = new Subscription();
   }
 
   ngOnInit(): void {
-    this._load();
-  }
+    this.igracService.getSelectedPlayers.subscribe((res) => {
+      this.players = res!;
+    })
 
-  resetFilter() {
     this._load();
   }
 
   private _load() {
     this._subs.add(
       this._playerHttp.getAllPlayers().subscribe((res: PlayerDto[]) => {
-        this.players = res;
+        this.igracService.setSelectedPlayers = res;
       })
     );
   }

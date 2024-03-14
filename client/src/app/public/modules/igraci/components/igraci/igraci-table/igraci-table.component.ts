@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { PlayerDto } from 'src/app/shared/models/player-dto';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { ConfirmationService } from 'primeng/api';
+import { IgraciService } from '../igraci.service';
 
 @Component({
   selector: 'app-igraci-table',
@@ -23,19 +24,16 @@ export class IgraciTableComponent implements OnInit {
     private _playerHttp: PlayerHttpService,
     private _dialogService: DialogService,
     private _alertService: AlertService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private _igraciService: IgraciService
   ) {
     this._subs = new Subscription();
   }
 
   ngOnInit(): void {
-    this._load();
-  }
-
-  private _load() {
     this._subs.add(
-      this._playerHttp.getAllPlayers().subscribe((res) => {
-        this.players = res;
+      this._igraciService.getSelectedPlayers.subscribe((res) => {
+        this.players = res!;
       })
     );
   }
@@ -55,12 +53,20 @@ export class IgraciTableComponent implements OnInit {
     });
   }
 
+  private _load() {
+    this._subs.add(
+      this._playerHttp.getAllPlayers().subscribe((res) => {
+        this.players = res;
+      })
+    );
+  }
+
   deletePlayer(playerId: number) {
     this.confirmationService.confirm({
-      header : 'Brisanje igrača',
+      header: 'Brisanje igrača',
       message: 'Da li ste sigurni da želite da obrišete igrača?',
-      acceptLabel: "Da",
-      rejectLabel: "Ne",
+      acceptLabel: 'Da',
+      rejectLabel: 'Ne',
       accept: () => {
         this._subs.add(
           this._playerHttp.deletePlayer(playerId).subscribe((res) => {
@@ -73,7 +79,6 @@ export class IgraciTableComponent implements OnInit {
         this.confirmationService.close();
       },
     });
-    
   }
 
   ngOnDestroy(): void {
