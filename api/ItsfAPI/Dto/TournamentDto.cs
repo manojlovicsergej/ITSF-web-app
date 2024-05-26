@@ -1,6 +1,4 @@
-﻿using ItsfAPI.Models;
-
-namespace ItsfAPI.Dto;
+﻿namespace ItsfAPI.Dto;
 
 public class TournamentDto : ITournamentDto
 {
@@ -11,7 +9,8 @@ public class TournamentDto : ITournamentDto
     public string Prize { get; set; }
     public List<GameDto>? Games { get; set; }
 
-    public TournamentDto(){
+    public TournamentDto()
+    {
         Name = "-";
         Format = "-";
         Place = "-";
